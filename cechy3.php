@@ -3,6 +3,7 @@ trait PriceUtilities {
 	function calculateTax($price){
 		return (($this->taxrate/100) * $price);
 	}
+	abstract function getTaxRate();
 }
 
 abstract class Service {
@@ -10,8 +11,11 @@ abstract class Service {
 }
 
 class UtilityService extends Service {
-	public $taxrate = 17;
 	use PriceUtilities;
+	
+	function getTaxRate() {
+		return 17;
+	}
 }
 
 $u = new UtilityService();
