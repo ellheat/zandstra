@@ -11,5 +11,7 @@ class StaticExample {
 StaticExample::sayHello();
 StaticExample::sayHello();
 StaticExample::sayHello();
+StaticExample::sayHello();
+StaticExample::sayHello();
 
 ?>
