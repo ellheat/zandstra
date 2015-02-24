@@ -11,14 +11,24 @@ abstract class Service {
 }
 
 class UtilityService extends Service {
-	use PriceUtilities;
+	use PriceUtilities {
+		PriceUtilities::calculateTax as private;
+	}
 	
+	private $price;
+	
+	function __construct($price){
+		return $this->price - $price;
+	}
 	function getTaxRate() {
 		return 17;
 	}
+	function getFinalPrice() {
+		return ($this->price + $this->calculateTax($this->price));
+	} 
 }
 
-$u = new UtilityService();
-print $u->calculateTax(100).'<br>';
+$u = new UtilityService(100);
+print $u->getFinalPrice().'<br>';
 
 ?>
